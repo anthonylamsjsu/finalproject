@@ -191,9 +191,6 @@ body {
 .orb-field {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* CENTER LIGHT */
@@ -242,126 +239,156 @@ body {
   will-change: transform, opacity, filter;
 }
 
-/* ORB POSITIONS */
+/* REAL OUTWARD + INWARD POSITIONS */
 
 .orb:nth-child(2) {
   --size: 320px;
   --c1: rgba(140,190,255,0.95);
   --c2: rgba(80,120,255,0.22);
-  --x: -420px;
-  --y: -120px;
+  --out-x: -420px;
+  --out-y: -120px;
+  --in-x: -28px;
+  --in-y: -8px;
 }
 
 .orb:nth-child(3) {
   --size: 360px;
   --c1: rgba(255,180,245,0.92);
   --c2: rgba(180,90,255,0.2);
-  --x: 420px;
-  --y: -100px;
+  --out-x: 420px;
+  --out-y: -100px;
+  --in-x: 28px;
+  --in-y: -7px;
 }
 
 .orb:nth-child(4) {
   --size: 340px;
   --c1: rgba(255,225,170,0.9);
   --c2: rgba(255,140,80,0.18);
-  --x: -300px;
-  --y: 240px;
+  --out-x: -300px;
+  --out-y: 240px;
+  --in-x: -20px;
+  --in-y: 16px;
 }
 
 .orb:nth-child(5) {
   --size: 400px;
   --c1: rgba(180,230,255,0.9);
   --c2: rgba(100,160,255,0.18);
-  --x: 280px;
-  --y: 260px;
+  --out-x: 280px;
+  --out-y: 260px;
+  --in-x: 18px;
+  --in-y: 18px;
 }
 
 .orb:nth-child(6) {
   --size: 260px;
   --c1: rgba(220,180,255,0.9);
   --c2: rgba(120,90,255,0.18);
-  --x: 0px;
-  --y: -320px;
+  --out-x: 0px;
+  --out-y: -320px;
+  --in-x: 0px;
+  --in-y: -22px;
 }
 
 .orb:nth-child(7) {
   --size: 240px;
   --c1: rgba(170,255,235,0.82);
   --c2: rgba(80,180,255,0.18);
-  --x: -520px;
-  --y: 40px;
+  --out-x: -520px;
+  --out-y: 40px;
+  --in-x: -35px;
+  --in-y: 3px;
 }
 
 .orb:nth-child(8) {
   --size: 280px;
   --c1: rgba(255,190,210,0.82);
   --c2: rgba(255,120,180,0.16);
-  --x: 520px;
-  --y: 60px;
+  --out-x: 520px;
+  --out-y: 60px;
+  --in-x: 35px;
+  --in-y: 4px;
 }
 
 .orb:nth-child(9) {
   --size: 230px;
   --c1: rgba(255,240,190,0.82);
   --c2: rgba(255,160,90,0.16);
-  --x: -120px;
-  --y: 380px;
+  --out-x: -120px;
+  --out-y: 380px;
+  --in-x: -8px;
+  --in-y: 25px;
 }
 
 .orb:nth-child(10) {
   --size: 250px;
   --c1: rgba(170,200,255,0.82);
   --c2: rgba(100,120,255,0.16);
-  --x: 130px;
-  --y: -430px;
+  --out-x: 130px;
+  --out-y: -430px;
+  --in-x: 9px;
+  --in-y: -30px;
 }
 
 .orb:nth-child(11) {
   --size: 210px;
   --c1: rgba(255,170,250,0.72);
   --c2: rgba(170,90,255,0.14);
-  --x: -470px;
-  --y: -270px;
+  --out-x: -470px;
+  --out-y: -270px;
+  --in-x: -31px;
+  --in-y: -18px;
 }
 
 .orb:nth-child(12) {
   --size: 220px;
   --c1: rgba(140,240,255,0.72);
   --c2: rgba(80,160,255,0.14);
-  --x: 470px;
-  --y: -270px;
+  --out-x: 470px;
+  --out-y: -270px;
+  --in-x: 31px;
+  --in-y: -18px;
 }
 
 .orb:nth-child(13) {
   --size: 210px;
   --c1: rgba(255,220,170,0.72);
   --c2: rgba(255,150,80,0.14);
-  --x: -460px;
-  --y: 320px;
+  --out-x: -460px;
+  --out-y: 320px;
+  --in-x: -30px;
+  --in-y: 21px;
 }
 
 .orb:nth-child(14) {
   --size: 230px;
   --c1: rgba(210,180,255,0.72);
   --c2: rgba(120,90,255,0.14);
-  --x: 460px;
-  --y: 320px;
+  --out-x: 460px;
+  --out-y: 320px;
+  --in-x: 30px;
+  --in-y: 21px;
 }
 
 .orb:nth-child(15) {
   --size: 190px;
   --c1: rgba(255,255,255,0.58);
   --c2: rgba(180,220,255,0.12);
-  --x: 0px;
-  --y: 460px;
+  --out-x: 0px;
+  --out-y: 460px;
+  --in-x: 0px;
+  --in-y: 30px;
 }
 
 .orb:nth-child(16) {
   --size: 190px;
   --c1: rgba(255,210,245,0.58);
   --c2: rgba(255,150,220,0.12);
-  --x: 0px;
-  --y: -520px;
+  --out-x: 0px;
+  --out-y: -520px;
+  --in-x: 0px;
+  --in-y: -35px;
 }
 
 /* TIMER */
@@ -469,41 +496,41 @@ body {
 }
 
 /* 14 SECOND BREATH LOOP:
-   INHALE 4s: ORBS CONVERGE
+   INHALE 4s: ORBS MOVE TO CENTER
    HOLD 2s: ORBS STAY MERGED
-   EXHALE 6s: ORBS SEPARATE
-   REST 2s: ORBS REST OUTWARD
+   EXHALE 6s: ORBS MOVE OUT
+   REST 2s: ORBS STAY OUT
 */
 
 @keyframes breatheFloat {
   0% {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+    transform: translate(calc(-50% + var(--out-x)), calc(-50% + var(--out-y))) scale(1);
     opacity: 0.42;
-    filter: blur(28px);
+    filter: blur(30px);
   }
 
   28.5% {
-    transform: translate(calc(-50% + (var(--x) * 0.08)), calc(-50% + (var(--y) * 0.08))) scale(1.16);
+    transform: translate(calc(-50% + var(--in-x)), calc(-50% + var(--in-y))) scale(1.16);
     opacity: 0.92;
-    filter: blur(18px);
+    filter: blur(20px);
   }
 
   42.8% {
-    transform: translate(calc(-50% + (var(--x) * 0.04)), calc(-50% + (var(--y) * 0.04))) scale(1.24);
+    transform: translate(calc(-50% + var(--in-x)), calc(-50% + var(--in-y))) scale(1.24);
     opacity: 1;
-    filter: blur(12px);
+    filter: blur(14px);
   }
 
   85.7% {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+    transform: translate(calc(-50% + var(--out-x)), calc(-50% + var(--out-y))) scale(1);
     opacity: 0.5;
-    filter: blur(28px);
+    filter: blur(30px);
   }
 
   100% {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+    transform: translate(calc(-50% + var(--out-x)), calc(-50% + var(--out-y))) scale(1);
     opacity: 0.42;
-    filter: blur(28px);
+    filter: blur(30px);
   }
 }
 
@@ -589,8 +616,19 @@ body {
     filter: blur(36px);
   }
 
-  .orb:nth-child(n) {
-    --x: calc(var(--x) * 0.55);
-    --y: calc(var(--y) * 0.55);
-  }
+  .orb:nth-child(2) { --out-x: -230px; --out-y: -70px; --in-x: -18px; --in-y: -5px; }
+  .orb:nth-child(3) { --out-x: 230px; --out-y: -65px; --in-x: 18px; --in-y: -5px; }
+  .orb:nth-child(4) { --out-x: -165px; --out-y: 145px; --in-x: -14px; --in-y: 12px; }
+  .orb:nth-child(5) { --out-x: 165px; --out-y: 150px; --in-x: 14px; --in-y: 12px; }
+  .orb:nth-child(6) { --out-x: 0px; --out-y: -190px; --in-x: 0px; --in-y: -16px; }
+  .orb:nth-child(7) { --out-x: -260px; --out-y: 30px; --in-x: -20px; --in-y: 3px; }
+  .orb:nth-child(8) { --out-x: 260px; --out-y: 35px; --in-x: 20px; --in-y: 3px; }
+  .orb:nth-child(9) { --out-x: -70px; --out-y: 215px; --in-x: -5px; --in-y: 16px; }
+  .orb:nth-child(10) { --out-x: 75px; --out-y: -225px; --in-x: 6px; --in-y: -18px; }
+  .orb:nth-child(11) { --out-x: -230px; --out-y: -160px; --in-x: -18px; --in-y: -12px; }
+  .orb:nth-child(12) { --out-x: 230px; --out-y: -160px; --in-x: 18px; --in-y: -12px; }
+  .orb:nth-child(13) { --out-x: -230px; --out-y: 180px; --in-x: -18px; --in-y: 14px; }
+  .orb:nth-child(14) { --out-x: 230px; --out-y: 180px; --in-x: 18px; --in-y: 14px; }
+  .orb:nth-child(15) { --out-x: 0px; --out-y: 250px; --in-x: 0px; --in-y: 20px; }
+  .orb:nth-child(16) { --out-x: 0px; --out-y: -270px; --in-x: 0px; --in-y: -22px; }
 }
