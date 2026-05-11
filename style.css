@@ -13,151 +13,148 @@ body {
 }
 
 body {
-  background: #020202;
+  height: 100vh;
+  overflow: hidden;
+  background: #010101;
   color: white;
   font-family: "Doto", sans-serif;
-  overflow: hidden;
-  height: 100vh;
   text-transform: uppercase;
 }
 
-/* MAIN VOID BACKGROUND */
+/* BASE VOID */
 
 .void {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.035), transparent 35%),
-    radial-gradient(circle at 18% 82%, rgba(128, 225, 255, 0.055), transparent 18%),
-    radial-gradient(circle at 82% 22%, rgba(255, 170, 235, 0.045), transparent 20%),
-    #020202;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,0.04), transparent 34%),
+    radial-gradient(circle at 18% 82%, rgba(95,210,255,0.05), transparent 20%),
+    radial-gradient(circle at 82% 20%, rgba(255,130,230,0.045), transparent 22%),
+    radial-gradient(circle at 50% 120%, rgba(180,120,255,0.055), transparent 30%),
+    #010101;
 }
 
-/* SUBTLE FILM GRAIN / STATIC */
+/* STATIC / GRAIN */
 
 .void::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.11;
+  opacity: 0.12;
   pointer-events: none;
   mix-blend-mode: screen;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.32'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.36'/%3E%3C/svg%3E");
+  animation: staticShift 1.8s steps(3) infinite;
 }
 
-/* TINY STAR FIELD */
+/* DIGITAL ASH / STAR FIELD */
 
 .void::after {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.65;
+  opacity: 0.6;
   pointer-events: none;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(132,240,255,0.7) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255,160,244,0.65) 0 1px, transparent 1.5px);
-  background-size: 220px 220px, 340px 340px, 460px 460px;
-  background-position: 20px 80px, 150px 40px, 90px 190px;
-  animation: starDrift 30s linear infinite;
+    radial-gradient(circle, rgba(255,255,255,0.75) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(148,245,255,0.62) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,156,244,0.52) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,239,168,0.42) 0 1px, transparent 1.5px);
+  background-size: 180px 180px, 290px 290px, 420px 420px, 540px 540px;
+  background-position: 20px 80px, 150px 40px, 90px 190px, 260px 120px;
+  animation: starDrift 42s linear infinite;
 }
 
-/* OLD ORBS ARE NOW GHOST LIGHTS */
+/* SUBTLE GHOST LIGHTS */
 
 .orb {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.28;
-  filter: blur(34px);
+  opacity: 0.2;
+  filter: blur(48px);
   mix-blend-mode: screen;
-  animation: ghostDrift 22s ease-in-out infinite alternate;
+  animation: ghostDrift 26s ease-in-out infinite alternate;
 }
-
-/* LEFT PURPLE GHOST LIGHT */
 
 .orb1 {
-  width: 240px;
-  height: 240px;
-  top: 14%;
-  left: -90px;
+  width: 300px;
+  height: 300px;
+  top: 8%;
+  left: -150px;
   background:
     radial-gradient(circle,
-      rgba(255, 154, 248, 0.42) 0%,
-      rgba(125, 95, 255, 0.22) 38%,
-      transparent 72%);
+      rgba(255,160,246,0.42) 0%,
+      rgba(132,100,255,0.24) 36%,
+      rgba(80,200,255,0.08) 58%,
+      transparent 78%);
 }
-
-/* RIGHT BLUE GHOST LIGHT */
 
 .orb2 {
-  width: 280px;
-  height: 280px;
-  top: 18%;
-  right: -110px;
+  width: 360px;
+  height: 360px;
+  top: 14%;
+  right: -190px;
   background:
     radial-gradient(circle,
-      rgba(128, 240, 255, 0.38) 0%,
-      rgba(155, 110, 255, 0.18) 42%,
-      transparent 75%);
-  animation-duration: 28s;
+      rgba(128,245,255,0.36) 0%,
+      rgba(180,120,255,0.2) 42%,
+      rgba(255,220,150,0.08) 62%,
+      transparent 80%);
+  animation-duration: 34s;
 }
 
-/* LOWER LEFT GREEN/CYAN GHOST LIGHT */
-
 .orb3 {
-  width: 260px;
-  height: 260px;
-  bottom: -120px;
+  width: 330px;
+  height: 330px;
+  bottom: -190px;
   left: 12%;
   background:
     radial-gradient(circle,
-      rgba(170, 255, 219, 0.35) 0%,
-      rgba(75, 160, 255, 0.18) 40%,
-      transparent 75%);
+      rgba(178,255,225,0.32) 0%,
+      rgba(86,150,255,0.18) 42%,
+      rgba(255,125,235,0.07) 64%,
+      transparent 82%);
+  animation-duration: 36s;
+}
+
+.orb4 {
+  width: 380px;
+  height: 380px;
+  bottom: -210px;
+  right: 5%;
+  background:
+    radial-gradient(circle,
+      rgba(255,150,218,0.34) 0%,
+      rgba(136,105,255,0.19) 42%,
+      rgba(130,240,255,0.08) 64%,
+      transparent 82%);
   animation-duration: 30s;
 }
 
-/* LOWER RIGHT PINK/VIOLET GHOST LIGHT */
-
-.orb4 {
-  width: 300px;
-  height: 300px;
-  bottom: -140px;
-  right: 8%;
-  background:
-    radial-gradient(circle,
-      rgba(255, 156, 213, 0.35) 0%,
-      rgba(126, 103, 255, 0.2) 42%,
-      transparent 75%);
-  animation-duration: 26s;
-}
-
-/* SMALL CENTER PULSE */
-
 .orb5 {
-  width: 76px;
-  height: 76px;
+  width: 90px;
+  height: 90px;
   left: 50%;
-  bottom: 6%;
+  bottom: 7%;
   transform: translateX(-50%);
+  opacity: 0.34;
+  filter: blur(16px);
   background:
     radial-gradient(circle,
-      rgba(255,255,255,0.7) 0%,
-      rgba(143, 255, 244, 0.28) 26%,
-      rgba(255, 120, 245, 0.14) 52%,
-      transparent 78%);
-  opacity: 0.38;
-  filter: blur(12px);
-  animation: pulseGhost 5s ease-in-out infinite alternate;
+      rgba(255,255,255,0.68) 0%,
+      rgba(158,255,248,0.28) 28%,
+      rgba(255,125,245,0.14) 54%,
+      transparent 80%);
+  animation: pulseGhost 6s ease-in-out infinite alternate;
 }
 
-/* MAIN CENTER CONTENT */
+/* MAIN CONTENT */
 
 .container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   min-height: 100vh;
   padding: 7vh 24px 6vh;
@@ -165,66 +162,62 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 26px;
   text-align: center;
 }
 
-/* TITLE */
-
 h1 {
-  font-size: clamp(2.9rem, 6.4vw, 6.8rem);
+  max-width: 1200px;
+  font-size: clamp(2.8rem, 6.2vw, 6.9rem);
   font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: 0.34em;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow:
-    0 0 14px rgba(255, 255, 255, 0.26),
-    0 0 34px rgba(155, 220, 255, 0.12);
+  line-height: 1.22;
+  letter-spacing: 0.32em;
+  color: transparent;
   background: linear-gradient(
     90deg,
-    #fff,
-    #f7b4ff,
-    #9ff8ff,
-    #fff4a8,
-    #b7a6ff,
-    #fff
+    #ffffff,
+    #f7b5ff,
+    #9df7ff,
+    #fff2a6,
+    #baa8ff,
+    #ffffff
   );
-  background-size: 240% auto;
+  background-size: 260% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  text-shadow:
+    0 0 18px rgba(255,255,255,0.18),
+    0 0 42px rgba(150,230,255,0.1);
   animation: shimmerText 12s ease-in-out infinite alternate;
 }
 
-/* SUBTITLE */
-
 .subtitle {
+  max-width: 850px;
   margin-top: -4px;
-  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.78rem, 1.25vw, 1.08rem);
   font-weight: 300;
   letter-spacing: 0.42em;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.55);
-  text-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+  line-height: 1.9;
+  color: rgba(255,255,255,0.52);
+  text-shadow: 0 0 18px rgba(255,255,255,0.12);
 }
 
-/* CONFESSION INPUT AREA */
+/* INPUT */
 
 .confession-box {
+  position: relative;
   width: min(760px, 88vw);
   height: 72px;
-  margin-top: 54px;
+  margin-top: 56px;
   display: flex;
   align-items: center;
-  padding: 0 10px 0 0;
-  border: none;
-  border-radius: 0;
+  padding: 0 8px 0 0;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.42);
   box-shadow:
-    0 1px 0 rgba(255, 190, 255, 0.35),
-    0 10px 28px rgba(120, 220, 255, 0.06);
-  position: relative;
+    0 1px 0 rgba(255,190,255,0.28),
+    0 14px 36px rgba(120,220,255,0.045);
 }
 
 .confession-box::before {
@@ -232,10 +225,10 @@ h1 {
   position: absolute;
   left: 0;
   top: -34px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
   letter-spacing: 0.38em;
-  color: rgba(255, 255, 255, 0.78);
+  color: transparent;
   background: linear-gradient(
     90deg,
     #ffffff,
@@ -246,7 +239,6 @@ h1 {
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   animation: shimmerText 10s ease-in-out infinite alternate;
 }
 
@@ -259,18 +251,16 @@ h1 {
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0.1),
-    rgba(255,189,245,0.95),
-    rgba(143,245,255,0.95),
-    rgba(255,238,150,0.85),
-    rgba(180,143,255,0.9),
-    rgba(255,255,255,0.1)
+    rgba(255,255,255,0.05),
+    rgba(255,189,245,0.85),
+    rgba(143,245,255,0.85),
+    rgba(255,238,150,0.7),
+    rgba(180,143,255,0.75),
+    rgba(255,255,255,0.05)
   );
   background-size: 260% auto;
   animation: shimmerLine 9s linear infinite;
 }
-
-/* INPUT */
 
 .confession-box input {
   flex: 1;
@@ -278,9 +268,9 @@ h1 {
   border: none;
   outline: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255,255,255,0.92);
   font-family: "Doto", sans-serif;
-  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -290,16 +280,14 @@ h1 {
   color: transparent;
 }
 
-/* ARROW BUTTON */
-
 .confession-box button {
   width: 64px;
   height: 64px;
   border: none;
   background: transparent;
-  color: rgba(255,255,255,0.88);
-  font-size: 2.6rem;
+  color: rgba(255,255,255,0.86);
   font-family: "Doto", sans-serif;
+  font-size: 2.55rem;
   cursor: pointer;
   text-shadow:
     0 0 12px rgba(255,255,255,0.35),
@@ -312,21 +300,18 @@ h1 {
 
 .confession-box button:hover {
   transform: translateX(8px);
-  opacity: 1;
   text-shadow:
     0 0 18px rgba(255,255,255,0.7),
     0 0 40px rgba(255,177,245,0.3);
 }
 
-/* SMALL NOTE */
-
 .note {
-  max-width: 720px;
-  font-size: clamp(0.72rem, 1.1vw, 0.95rem);
+  max-width: 740px;
+  font-size: clamp(0.68rem, 1.05vw, 0.9rem);
   font-weight: 300;
   letter-spacing: 0.32em;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.42);
+  line-height: 2;
+  color: rgba(255,255,255,0.38);
 }
 
 /* MESSAGE LAYER */
@@ -338,49 +323,49 @@ h1 {
   pointer-events: none;
 }
 
-/* USER CONFESSION FLOATING AWAY */
+/* USER CONFESSION */
 
 .floating-message {
   position: absolute;
   left: 50%;
   top: 58%;
   max-width: min(620px, 80vw);
-  color: rgba(255,255,255,0.74);
-  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  color: rgba(255,255,255,0.76);
+  font-size: clamp(0.88rem, 1.25vw, 1.12rem);
   font-weight: 300;
   letter-spacing: 0.24em;
-  line-height: 1.7;
+  line-height: 1.75;
   text-align: center;
   text-transform: uppercase;
   text-shadow:
-    0 0 14px rgba(255,255,255,0.28),
+    0 0 16px rgba(255,255,255,0.26),
     0 0 30px rgba(155,230,255,0.12);
   animation: floatAway 8s ease forwards;
 }
 
-/* RESPONSE / ECHO STYLE */
+/* MACHINE RESPONSE */
 
 .echo-message {
   position: absolute;
   left: 50%;
   top: 72%;
   width: min(760px, 82vw);
-  padding: 28px 32px;
-  border: 1px solid rgba(255,255,255,0.24);
+  padding: 26px 30px;
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 18px;
-  background: rgba(0,0,0,0.22);
-  backdrop-filter: blur(10px);
-  color: rgba(255,255,255,0.82);
-  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(12px);
+  color: rgba(255,255,255,0.84);
+  font-size: clamp(0.95rem, 1.45vw, 1.28rem);
   font-weight: 300;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   line-height: 1.8;
   text-align: center;
   text-transform: uppercase;
   box-shadow:
-    0 0 28px rgba(255,255,255,0.06),
-    0 0 50px rgba(150,230,255,0.08),
-    inset 0 0 28px rgba(255,255,255,0.025);
+    0 0 30px rgba(255,255,255,0.045),
+    0 0 60px rgba(150,230,255,0.07),
+    inset 0 0 26px rgba(255,255,255,0.025);
   animation: echoAppear 7s ease forwards;
 }
 
@@ -389,11 +374,11 @@ h1 {
   position: absolute;
   left: 0;
   right: 0;
-  top: -44px;
+  top: -42px;
   text-align: center;
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   letter-spacing: 0.34em;
-  color: rgba(255,255,255,0.62);
+  color: rgba(255,255,255,0.56);
 }
 
 .echo-message::after {
@@ -401,14 +386,79 @@ h1 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -42px;
+  bottom: -40px;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   letter-spacing: 0.34em;
-  color: rgba(255,255,255,0.36);
+  color: rgba(255,255,255,0.32);
+}
+
+/* BACKGROUND MEMORIES */
+
+.memory-fragment {
+  position: absolute;
+  z-index: 1;
+  max-width: 520px;
+  color: rgba(255,255,255,0.32);
+  font-size: clamp(0.62rem, 1vw, 0.92rem);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  line-height: 1.7;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: normal;
+  filter: blur(1.2px);
+  text-shadow:
+    0 0 14px rgba(255,255,255,0.16),
+    0 0 28px rgba(150,230,255,0.06);
+  animation: memoryDrift 38s linear infinite;
+}
+
+.memory-fragment.near {
+  color: rgba(255,255,255,0.5);
+  font-size: clamp(0.76rem, 1.12vw, 1.02rem);
+  filter: blur(0.4px);
+  animation-duration: 34s;
+}
+
+.memory-fragment.far {
+  color: rgba(255,255,255,0.18);
+  font-size: clamp(0.52rem, 0.75vw, 0.72rem);
+  filter: blur(2.4px);
+  animation-duration: 52s;
+}
+
+/* PARTICLES */
+
+.particle {
+  position: absolute;
+  z-index: 1;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.62);
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.34),
+    0 0 16px rgba(160,240,255,0.12);
+  opacity: 0.45;
+  animation: particleFloat 18s linear infinite;
 }
 
 /* ANIMATIONS */
+
+@keyframes staticShift {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-1%, 1%);
+  }
+
+  100% {
+    transform: translate(1%, -1%);
+  }
+}
 
 @keyframes ghostDrift {
   0% {
@@ -416,29 +466,29 @@ h1 {
   }
 
   100% {
-    transform: translate3d(38px, -26px, 0) scale(1.08);
+    transform: translate3d(38px, -28px, 0) scale(1.07);
   }
 }
 
 @keyframes pulseGhost {
   0% {
     transform: translateX(-50%) scale(0.88);
-    opacity: 0.22;
+    opacity: 0.2;
   }
 
   100% {
     transform: translateX(-50%) scale(1.18);
-    opacity: 0.5;
+    opacity: 0.46;
   }
 }
 
 @keyframes starDrift {
   0% {
-    background-position: 20px 80px, 150px 40px, 90px 190px;
+    background-position: 20px 80px, 150px 40px, 90px 190px, 260px 120px;
   }
 
   100% {
-    background-position: 70px 130px, 100px 90px, 140px 240px;
+    background-position: 90px 160px, 70px 120px, 160px 270px, 200px 210px;
   }
 }
 
@@ -474,7 +524,7 @@ h1 {
   }
 
   100% {
-    transform: translate(-50%, -420px) scale(0.74);
+    transform: translate(-50%, -430px) scale(0.72);
     opacity: 0;
     filter: blur(8px);
   }
@@ -482,7 +532,7 @@ h1 {
 
 @keyframes echoAppear {
   0% {
-    transform: translate(-50%, 30px);
+    transform: translate(-50%, 32px);
     opacity: 0;
     filter: blur(8px);
   }
@@ -498,32 +548,64 @@ h1 {
   }
 
   100% {
-    transform: translate(-50%, -18px);
+    transform: translate(-50%, -20px);
     opacity: 0;
     filter: blur(7px);
   }
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 700px) {
-  body {
-    overflow: hidden;
+@keyframes memoryDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
   }
 
+  12% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 0.82;
+  }
+
+  100% {
+    transform: translate3d(40px, -180px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.48;
+  }
+
+  100% {
+    transform: translate3d(20px, -140px, 0);
+    opacity: 0;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
   .container {
     padding: 8vh 20px 6vh;
     gap: 22px;
   }
 
   h1 {
-    font-size: clamp(2.2rem, 10vw, 4rem);
-    letter-spacing: 0.18em;
+    font-size: clamp(2.1rem, 9.8vw, 4rem);
+    letter-spacing: 0.16em;
   }
 
   .subtitle {
-    font-size: 0.78rem;
-    letter-spacing: 0.24em;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
   }
 
   .confession-box {
@@ -533,30 +615,34 @@ h1 {
   }
 
   .confession-box::before {
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
     top: -28px;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
   }
 
   .confession-box button {
-    font-size: 2rem;
     width: 48px;
+    font-size: 2rem;
   }
 
   .note {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
   }
 
   .echo-message {
     width: 86vw;
     padding: 22px;
-    font-size: 0.88rem;
-    letter-spacing: 0.16em;
+    font-size: 0.84rem;
+    letter-spacing: 0.15em;
+  }
+
+  .memory-fragment {
+    max-width: 70vw;
   }
 
   .orb {
-    opacity: 0.18;
-    filter: blur(42px);
+    opacity: 0.16;
+    filter: blur(54px);
   }
 }
