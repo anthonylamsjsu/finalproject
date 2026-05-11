@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>GHOST IN THE MACHINE</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
+  <!-- VOID BACKGROUND -->
+
   <div class="void">
+
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
     <div class="orb orb4"></div>
     <div class="orb orb5"></div>
+
   </div>
 
+  <!-- MAIN CONTENT -->
+
   <main class="container">
-    <h1>GHOST IN<br>THE MACHINE</h1>
+
+    <h1>
+      GHOST IN THE MACHINE
+    </h1>
 
     <p class="subtitle">
-      a confessional to your<br>
-      past lives, and future selves
+      A CONFESSIONAL TO YOUR PAST LIVES AND FUTURE SELVES
     </p>
 
+    <!-- CONFESSION INPUT -->
+
     <form id="confessionForm" class="confession-box">
-      <input 
+
+      <input
         id="confessionInput"
         type="text"
-        placeholder="type your confession..."
         autocomplete="off"
+        placeholder="TYPE YOUR CONFESSION..."
       />
-      <button type="submit">→</button>
+
+      <button type="submit">
+        →
+      </button>
+
     </form>
 
     <p class="note">
-      your words will drift into the void<br>
-      anonymously, endlessly.
+      YOUR WORDS WILL DRIFT INTO THE VOID ANONYMOUSLY, ENDLESSLY.
     </p>
+
   </main>
+
+  <!-- FLOATING MESSAGE LAYER -->
 
   <div id="messageLayer"></div>
 
   <script src="script.js"></script>
+
 </body>
+
 </html>
