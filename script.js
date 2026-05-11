@@ -1,128 +1,92 @@
-const form = document.getElementById("confessionForm");
-const input = document.getElementById("confessionInput");
-const messageLayer = document.getElementById("messageLayer");
+const breathLabel = document.getElementById("breathLabel");
+const timer = document.getElementById("timer");
+const endButton = document.getElementById("endButton");
 
-/* SEEDED MACHINE ECHOES */
+let totalSeconds = 180;
+let remainingSeconds = totalSeconds;
+let sessionRunning = true;
 
-const seededEchoes = [
-
-  "YOU ARE NOT ALONE.",
-  "SOMEONE ELSE HAS WONDERED THE SAME.",
-  "YOU ARE MORE THAN YOU THINK.",
-  "SOME THOUGHTS NEVER FULLY LEAVE.",
-  "YOU ARE STILL BECOMING.",
-  "ANOTHER SOUL LEFT THIS HERE BEFORE YOU.",
-  "SOMEBODY OUT THERE UNDERSTANDS THIS FEELING.",
-  "SOME MEMORIES CONTINUE FOREVER.",
-  "YOU WERE ALWAYS MEANT TO BE HERE.",
-  "THERE IS MORE TO LIFE THAN THIS, NEVER SETTLE.,
-  "THIS CONFESSION NOW BELONGS TO THE VOID.",
-  "YOUR PAST SELF IS STILL LISTENING.",
-  "YOU ARE PART OF SOMETHING LARGER NOW.",
-  "SOMEBODY ELSE ONCE TYPED THESE SAME WORDS."
-
+const breathCycle = [
+  {
+    label: "BREATHE IN",
+    duration: 4000
+  },
+  {
+    label: "HOLD",
+    duration: 2000
+  },
+  {
+    label: "BREATHE OUT",
+    duration: 6000
+  },
+  {
+    label: "REST",
+    duration: 2000
+  }
 ];
 
-/* LOAD SAVED USER CONFESSIONS */
+let cycleIndex = 0;
 
-let storedConfessions =
-  JSON.parse(localStorage.getItem("ghostConfessions")) || [];
+/* START */
 
-/* FORM SUBMIT */
+updateTimer();
+runBreathCycle();
 
-form.addEventListener("submit", function (event) {
+const countdown = setInterval(() => {
+  if (!sessionRunning) return;
 
-  event.preventDefault();
+  remainingSeconds--;
 
-  const confession = input.value.trim();
-
-  if (!confession) return;
-
-  /* SEND USER MESSAGE INTO VOID */
-
-  sendIntoVoid(confession);
-
-  /* SAVE USER CONFESSION */
-
-  storedConfessions.push(confession);
-
-  localStorage.setItem(
-    "ghostConfessions",
-    JSON.stringify(storedConfessions)
-  );
-
-  /* CLEAR INPUT */
-
-  input.value = "";
-
-  /* MACHINE RESPONSE */
-
-  setTimeout(() => {
-
-    generateEcho();
-
-  }, 2600);
-
-});
-
-/* FLOAT USER MESSAGE */
-
-function sendIntoVoid(text) {
-
-  const message = document.createElement("div");
-
-  message.classList.add("floating-message");
-
-  message.textContent = text;
-
-  const randomX = Math.random() * 36 - 18;
-
-  message.style.left = `calc(50% + ${randomX}vw)`;
-
-  messageLayer.appendChild(message);
-
-  setTimeout(() => {
-
-    message.remove();
-
-  }, 8000);
-
-}
-
-/* GENERATE MACHINE RESPONSE */
-
-function generateEcho() {
-
-  const echo = document.createElement("div");
-
-  echo.classList.add("echo-message");
-
-  /* RANDOMLY CHOOSE:
-     SEEDED ECHO
-     OR REAL USER CONFESSION */
-
-  let possibleEchoes = [...seededEchoes];
-
-  if (storedConfessions.length > 1) {
-
-    possibleEchoes =
-      possibleEchoes.concat(storedConfessions);
-
+  if (remainingSeconds <= 0) {
+    remainingSeconds = 0;
+    sessionRunning = false;
+    clearInterval(countdown);
+    breathLabel.textContent = "SESSION COMPLETE";
+    endButton.textContent = "BEGIN AGAIN";
   }
 
-  const randomEcho =
-    possibleEchoes[
-      Math.floor(Math.random() * possibleEchoes.length)
-    ];
+  updateTimer();
+}, 1000);
 
-  echo.textContent = randomEcho;
+/* BREATH GUIDE */
 
-  messageLayer.appendChild(echo);
+function runBreathCycle() {
+  if (!sessionRunning) return;
+
+  const currentStep = breathCycle[cycleIndex];
+
+  breathLabel.textContent = currentStep.label;
+
+  cycleIndex = (cycleIndex + 1) % breathCycle.length;
 
   setTimeout(() => {
-
-    echo.remove();
-
-  }, 7000);
-
+    runBreathCycle();
+  }, currentStep.duration);
 }
+
+/* TIMER */
+
+function updateTimer() {
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+
+  timer.textContent =
+    `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+/* END / RESTART */
+
+endButton.addEventListener("click", () => {
+  if (sessionRunning) {
+    sessionRunning = false;
+    breathLabel.textContent = "SESSION PAUSED";
+    endButton.textContent = "BEGIN AGAIN";
+  } else {
+    remainingSeconds = totalSeconds;
+    sessionRunning = true;
+    cycleIndex = 0;
+    endButton.textContent = "END SESSION";
+    updateTimer();
+    runBreathCycle();
+  }
+});
