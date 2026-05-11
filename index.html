@@ -12,26 +12,31 @@
 
 <body>
 
-  <main class="breathing-room">
+  <main class="breathing-room" id="breathingRoom">
 
-    <header class="site-title">
-      BREATHING ROOM
-    </header>
+    <section class="intro-screen" id="introScreen">
+      <h1>BREATHING ROOM</h1>
 
-    <div class="sound-toggle">
-      <span>SOUND</span>
-      <span class="sound-dot"></span>
-      <span>ON</span>
-      <span class="sound-ring"></span>
-    </div>
+      <p>
+        A QUIET SPACE TO RETURN TO YOURSELF
+      </p>
 
-    <section class="meditation-stage">
+      <button id="startButton" class="start-button">
+        START SESSION
+      </button>
+    </section>
+
+    <section class="session-screen" id="sessionScreen">
+
+      <header class="site-title">
+        BREATHING ROOM
+      </header>
 
       <div class="breath-label" id="breathLabel">
         BREATHE IN
       </div>
 
-      <div class="orb-field">
+      <div class="orb-field" id="orbField">
 
         <div class="center-light"></div>
 
@@ -55,31 +60,31 @@
 
       </div>
 
-    </section>
+      <section class="timer-area">
 
-    <section class="timer-area">
+        <div class="timer" id="timer">
+          03:00
+        </div>
 
-      <div class="timer" id="timer">
-        03:00
+        <div class="timer-label">
+          TIME REMAINING
+        </div>
+
+      </section>
+
+      <button class="end-button" id="endButton">
+        END SESSION
+      </button>
+
+      <div class="session-length">
+        3 MIN SESSION
       </div>
 
-      <div class="timer-label">
-        TIME REMAINING
+      <div class="guide" id="guide">
+        INHALE 4 · HOLD 2 · EXHALE 6 · REST 2
       </div>
 
     </section>
-
-    <button class="end-button" id="endButton">
-      END SESSION
-    </button>
-
-    <div class="session-length">
-      3 MIN SESSION
-    </div>
-
-    <div class="guide">
-      GUIDE
-    </div>
 
   </main>
 
