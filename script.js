@@ -25,10 +25,6 @@ const breathCycle = [
   {
     label: "BREATHE OUT",
     duration: 6000
-  },
-  {
-    label: "REST",
-    duration: 2000
   }
 ];
 
