@@ -6,243 +6,557 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  background: #000;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #020202;
   color: white;
   font-family: "Doto", sans-serif;
   overflow: hidden;
   height: 100vh;
+  text-transform: uppercase;
 }
+
+/* MAIN VOID BACKGROUND */
 
 .void {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.04), transparent 35%),
-    #000;
   z-index: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.035), transparent 35%),
+    radial-gradient(circle at 18% 82%, rgba(128, 225, 255, 0.055), transparent 18%),
+    radial-gradient(circle at 82% 22%, rgba(255, 170, 235, 0.045), transparent 20%),
+    #020202;
+  overflow: hidden;
 }
+
+/* SUBTLE FILM GRAIN / STATIC */
+
+.void::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.11;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+/* TINY STAR FIELD */
 
 .void::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.22'/%3E%3C/svg%3E");
-  opacity: 0.08;
-  mix-blend-mode: screen;
+  opacity: 0.65;
   pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(132,240,255,0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,160,244,0.65) 0 1px, transparent 1.5px);
+  background-size: 220px 220px, 340px 340px, 460px 460px;
+  background-position: 20px 80px, 150px 40px, 90px 190px;
+  animation: starDrift 30s linear infinite;
 }
+
+/* OLD ORBS ARE NOW GHOST LIGHTS */
 
 .orb {
   position: absolute;
-  width: 520px;
-  height: 520px;
   border-radius: 50%;
-  filter: blur(4px);
-  opacity: 0.65;
-  animation: drift 18s ease-in-out infinite alternate;
+  opacity: 0.28;
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  animation: ghostDrift 22s ease-in-out infinite alternate;
 }
 
-.orb::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 65% 65%,
-    rgba(255,255,255,0.95) 0%,
-    rgba(255,255,255,0.35) 5%,
-    transparent 17%),
-    radial-gradient(circle at center,
-    transparent 35%,
-    rgba(255,255,255,0.08) 52%,
-    rgba(255,255,255,0.55) 75%,
-    rgba(255,255,255,0.05) 100%);
-  box-shadow:
-    inset -40px -60px 100px rgba(0,0,0,0.95),
-    inset 30px 30px 80px rgba(255,255,255,0.05),
-    0 0 70px currentColor;
-}
+/* LEFT PURPLE GHOST LIGHT */
 
 .orb1 {
-  top: -220px;
-  left: -120px;
-  color: #ff39d4;
-  background: radial-gradient(circle at 70% 70%, #ff65df, #5c1dff 45%, #080008 75%);
+  width: 240px;
+  height: 240px;
+  top: 14%;
+  left: -90px;
+  background:
+    radial-gradient(circle,
+      rgba(255, 154, 248, 0.42) 0%,
+      rgba(125, 95, 255, 0.22) 38%,
+      transparent 72%);
 }
+
+/* RIGHT BLUE GHOST LIGHT */
 
 .orb2 {
-  top: -190px;
-  right: -130px;
-  color: #ff9f24;
-  background: radial-gradient(circle at 35% 70%, #ffbb45, #9d31ff 42%, #070007 78%);
-  animation-duration: 22s;
+  width: 280px;
+  height: 280px;
+  top: 18%;
+  right: -110px;
+  background:
+    radial-gradient(circle,
+      rgba(128, 240, 255, 0.38) 0%,
+      rgba(155, 110, 255, 0.18) 42%,
+      transparent 75%);
+  animation-duration: 28s;
 }
+
+/* LOWER LEFT GREEN/CYAN GHOST LIGHT */
 
 .orb3 {
-  bottom: -260px;
-  left: -180px;
-  color: #39fff3;
-  background: radial-gradient(circle at 80% 30%, #80fff8, #184cff 42%, #00070a 80%);
-  animation-duration: 24s;
+  width: 260px;
+  height: 260px;
+  bottom: -120px;
+  left: 12%;
+  background:
+    radial-gradient(circle,
+      rgba(170, 255, 219, 0.35) 0%,
+      rgba(75, 160, 255, 0.18) 40%,
+      transparent 75%);
+  animation-duration: 30s;
 }
+
+/* LOWER RIGHT PINK/VIOLET GHOST LIGHT */
 
 .orb4 {
-  bottom: -210px;
-  right: -120px;
-  color: #9a4dff;
-  background: radial-gradient(circle at 25% 25%, #ff5df7, #3d5bff 42%, #040008 80%);
-  animation-duration: 20s;
+  width: 300px;
+  height: 300px;
+  bottom: -140px;
+  right: 8%;
+  background:
+    radial-gradient(circle,
+      rgba(255, 156, 213, 0.35) 0%,
+      rgba(126, 103, 255, 0.2) 42%,
+      transparent 75%);
+  animation-duration: 26s;
 }
+
+/* SMALL CENTER PULSE */
 
 .orb5 {
-  width: 110px;
-  height: 110px;
-  left: 48%;
-  bottom: 7%;
-  color: #7b78ff;
-  background: radial-gradient(circle, #ffffff, #6d35ff 28%, #020015 75%);
-  opacity: 0.45;
-  animation-duration: 16s;
+  width: 76px;
+  height: 76px;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle,
+      rgba(255,255,255,0.7) 0%,
+      rgba(143, 255, 244, 0.28) 26%,
+      rgba(255, 120, 245, 0.14) 52%,
+      transparent 78%);
+  opacity: 0.38;
+  filter: blur(12px);
+  animation: pulseGhost 5s ease-in-out infinite alternate;
 }
 
-@keyframes drift {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(60px, -40px) scale(1.08);
-  }
-}
+/* MAIN CENTER CONTENT */
 
 .container {
   position: relative;
   z-index: 2;
+  width: 100%;
   min-height: 100vh;
+  padding: 7vh 24px 6vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 26px;
+  gap: 28px;
   text-align: center;
-  padding: 24px;
 }
+
+/* TITLE */
 
 h1 {
-  font-size: clamp(3rem, 7vw, 7rem);
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  line-height: 1.15;
-  text-shadow: 0 0 22px rgba(255,255,255,0.35);
+  font-size: clamp(2.9rem, 6.4vw, 6.8rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.34em;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.26),
+    0 0 34px rgba(155, 220, 255, 0.12);
+  background: linear-gradient(
+    90deg,
+    #fff,
+    #f7b4ff,
+    #9ff8ff,
+    #fff4a8,
+    #b7a6ff,
+    #fff
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerText 12s ease-in-out infinite alternate;
 }
+
+/* SUBTITLE */
 
 .subtitle {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: rgba(255,255,255,0.78);
-  letter-spacing: 0.1em;
-  line-height: 1.4;
+  margin-top: -4px;
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
 }
 
+/* CONFESSION INPUT AREA */
+
 .confession-box {
-  width: min(760px, 90vw);
-  height: 70px;
-  border: 1px solid rgba(255,255,255,0.55);
-  border-radius: 999px;
+  width: min(760px, 88vw);
+  height: 72px;
+  margin-top: 54px;
   display: flex;
   align-items: center;
-  padding: 0 18px 0 32px;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(16px);
+  padding: 0 10px 0 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
   box-shadow:
-    0 0 22px rgba(138,80,255,0.35),
-    inset 0 0 18px rgba(255,255,255,0.04);
+    0 1px 0 rgba(255, 190, 255, 0.35),
+    0 10px 28px rgba(120, 220, 255, 0.06);
+  position: relative;
 }
+
+.confession-box::before {
+  content: "TYPE YOUR CONFESSION...";
+  position: absolute;
+  left: 0;
+  top: -34px;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  color: rgba(255, 255, 255, 0.78);
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #f5b8ff,
+    #9df7ff,
+    #fff3b0
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerText 10s ease-in-out infinite alternate;
+}
+
+.confession-box::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.1),
+    rgba(255,189,245,0.95),
+    rgba(143,245,255,0.95),
+    rgba(255,238,150,0.85),
+    rgba(180,143,255,0.9),
+    rgba(255,255,255,0.1)
+  );
+  background-size: 260% auto;
+  animation: shimmerLine 9s linear infinite;
+}
+
+/* INPUT */
 
 .confession-box input {
   flex: 1;
-  background: transparent;
+  height: 100%;
   border: none;
   outline: none;
-  color: white;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
   font-family: "Doto", sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .confession-box input::placeholder {
-  color: rgba(255,255,255,0.45);
+  color: transparent;
 }
 
+/* ARROW BUTTON */
+
 .confession-box button {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   border: none;
   background: transparent;
-  color: white;
-  font-size: 2.5rem;
+  color: rgba(255,255,255,0.88);
+  font-size: 2.6rem;
+  font-family: "Doto", sans-serif;
   cursor: pointer;
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  text-shadow:
+    0 0 12px rgba(255,255,255,0.35),
+    0 0 28px rgba(164,238,255,0.18);
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    text-shadow 0.35s ease;
 }
 
 .confession-box button:hover {
-  transform: translateX(6px);
-  text-shadow: 0 0 18px white;
+  transform: translateX(8px);
+  opacity: 1;
+  text-shadow:
+    0 0 18px rgba(255,255,255,0.7),
+    0 0 40px rgba(255,177,245,0.3);
 }
 
+/* SMALL NOTE */
+
 .note {
-  color: rgba(255,255,255,0.48);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  line-height: 1.5;
+  max-width: 720px;
+  font-size: clamp(0.72rem, 1.1vw, 0.95rem);
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.42);
 }
+
+/* MESSAGE LAYER */
 
 #messageLayer {
   position: fixed;
   inset: 0;
+  z-index: 4;
   pointer-events: none;
-  z-index: 3;
 }
+
+/* USER CONFESSION FLOATING AWAY */
 
 .floating-message {
   position: absolute;
   left: 50%;
   top: 58%;
-  max-width: 500px;
-  color: rgba(255,255,255,0.8);
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
+  max-width: min(620px, 80vw);
+  color: rgba(255,255,255,0.74);
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  line-height: 1.7;
   text-align: center;
-  filter: blur(0.2px);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 14px rgba(255,255,255,0.28),
+    0 0 30px rgba(155,230,255,0.12);
   animation: floatAway 8s ease forwards;
+}
+
+/* RESPONSE / ECHO STYLE */
+
+.echo-message {
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  width: min(760px, 82vw);
+  padding: 28px 32px;
+  border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 18px;
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(10px);
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  line-height: 1.8;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 28px rgba(255,255,255,0.06),
+    0 0 50px rgba(150,230,255,0.08),
+    inset 0 0 28px rgba(255,255,255,0.025);
+  animation: echoAppear 7s ease forwards;
+}
+
+.echo-message::before {
+  content: "THE MACHINE RESPONDS...";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -44px;
+  text-align: center;
+  font-size: 0.88rem;
+  letter-spacing: 0.34em;
+  color: rgba(255,255,255,0.62);
+}
+
+.echo-message::after {
+  content: "AN ECHO FROM THE VOID";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -42px;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  color: rgba(255,255,255,0.36);
+}
+
+/* ANIMATIONS */
+
+@keyframes ghostDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(38px, -26px, 0) scale(1.08);
+  }
+}
+
+@keyframes pulseGhost {
+  0% {
+    transform: translateX(-50%) scale(0.88);
+    opacity: 0.22;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1.18);
+    opacity: 0.5;
+  }
+}
+
+@keyframes starDrift {
+  0% {
+    background-position: 20px 80px, 150px 40px, 90px 190px;
+  }
+
+  100% {
+    background-position: 70px 130px, 100px 90px, 140px 240px;
+  }
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes shimmerLine {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 260% center;
+  }
 }
 
 @keyframes floatAway {
   0% {
     transform: translate(-50%, 0) scale(1);
     opacity: 0;
+    filter: blur(0px);
   }
 
-  10% {
+  12% {
     opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -420px) scale(0.7);
+    transform: translate(-50%, -420px) scale(0.74);
     opacity: 0;
     filter: blur(8px);
   }
 }
 
+@keyframes echoAppear {
+  0% {
+    transform: translate(-50%, 30px);
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  16% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  78% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  100% {
+    transform: translate(-50%, -18px);
+    opacity: 0;
+    filter: blur(7px);
+  }
+}
+
+/* RESPONSIVE */
+
 @media (max-width: 700px) {
-  .orb {
-    width: 360px;
-    height: 360px;
+  body {
+    overflow: hidden;
+  }
+
+  .container {
+    padding: 8vh 20px 6vh;
+    gap: 22px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 10vw, 4rem);
+    letter-spacing: 0.18em;
+  }
+
+  .subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
   }
 
   .confession-box {
-    height: 62px;
+    width: 86vw;
+    height: 64px;
+    margin-top: 44px;
   }
 
-  .confession-box input {
-    font-size: 1rem;
+  .confession-box::before {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    top: -28px;
   }
-}l
+
+  .confession-box button {
+    font-size: 2rem;
+    width: 48px;
+  }
+
+  .note {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+  }
+
+  .echo-message {
+    width: 86vw;
+    padding: 22px;
+    font-size: 0.88rem;
+    letter-spacing: 0.16em;
+  }
+
+  .orb {
+    opacity: 0.18;
+    filter: blur(42px);
+  }
+}
