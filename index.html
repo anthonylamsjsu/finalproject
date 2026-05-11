@@ -5,52 +5,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>GHOST IN THE MACHINE</title>
+  <title>BREATHING ROOM</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <div class="void">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    <div class="orb orb4"></div>
-    <div class="orb orb5"></div>
-  </div>
+  <main class="breathing-room">
 
-  <div id="memoryLayer"></div>
-  <div id="particleLayer"></div>
+    <header class="site-title">
+      BREATHING ROOM
+    </header>
 
-  <main class="container">
+    <div class="sound-toggle">
+      <span>SOUND</span>
+      <span class="sound-dot"></span>
+      <span>ON</span>
+      <span class="sound-ring"></span>
+    </div>
 
-    <h1>GHOST IN THE MACHINE</h1>
+    <section class="meditation-stage">
 
-    <p class="subtitle">
-      A CONFESSIONAL TO YOUR PAST LIVES AND FUTURE SELVES
-    </p>
+      <div class="breath-label" id="breathLabel">
+        BREATHE IN
+      </div>
 
-    <form id="confessionForm" class="confession-box">
+      <div class="orb-field">
 
-      <input
-        id="confessionInput"
-        type="text"
-        autocomplete="off"
-        placeholder="TYPE YOUR CONFESSION..."
-      />
+        <div class="center-light"></div>
 
-      <button type="submit">→</button>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
 
-    </form>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
 
-    <p class="note">
-      YOUR WORDS WILL DRIFT INTO THE VOID ANONYMOUSLY, ENDLESSLY.
-    </p>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+
+      </div>
+
+    </section>
+
+    <section class="timer-area">
+
+      <div class="timer" id="timer">
+        03:00
+      </div>
+
+      <div class="timer-label">
+        TIME REMAINING
+      </div>
+
+    </section>
+
+    <button class="end-button" id="endButton">
+      END SESSION
+    </button>
+
+    <div class="session-length">
+      3 MIN SESSION
+    </div>
+
+    <div class="guide">
+      GUIDE
+    </div>
 
   </main>
-
-  <div id="messageLayer"></div>
 
   <script src="script.js"></script>
 
